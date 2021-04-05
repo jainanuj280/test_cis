@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Router Details Record</title>
+     {% load static %}
+    <link rel="stylesheet" href="{% static 'index.css' %}"/>
+</head>
+<body>
+<table class="table table-striped table-bordered table-sm">
+    <thead class="thead-dark">
+    <tr>
+        <th>Sap ID</th>
+        <th>Host Name</th>
+        <th>Loop Back</th>
+        <th>Mac Address</th>
+    </tr>
+    </thead>
+    <tbody>
+{% for routerObj in routerObjs %}
+    <tr>
+        <td>{{ routerObj.sapId}}</td>
+        <td>{{ routerObj.hostName }}</td>
+        <td>{{ routerObj.loopBack }}</td>
+        <td>{{ routerObj.macAdd }}</td>
+        <td>
+            <a href="/edit/{{ routerObj.id }}/"><span class="glyphicon glyphicon-pencil" >Edit</span></a>
+            <a href="/delete/{{ routerObj.id }}/">Delete</a>
+        </td>
+    </tr>
+{% endfor %}
+    </tbody>
+</table>
+<br>
+<br>
+<center><a href="/create/" class="btn btn-primary">Add New Router Detail</a></center>
+</body>
+</html>
